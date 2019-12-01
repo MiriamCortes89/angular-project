@@ -1,0 +1,45 @@
+<h3>About</h3>
+<ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about">about</a></li>
+
+</ul>
+
+
+<!--Formulario-->
+<form (submit)="addUser(newuser)">
+    <input type="text" #newuser />
+    <button>Send</button>
+</form>
+
+<!--Doble enlace de datos: cambian los valores mostrados y se alteran a tiempo real-->
+<form>
+    <input type="text" name="name" [(ngModel)]="name" />
+    <input type="number" name="age" [(ngModel)]="age" />
+</form>
+{{name}}
+{{age}}
+
+<!-- llamamnos a segundo.component, Recorremos el users de este componente
+        , y le pasamos el dato html del componente segundo para q lo imprima-->
+<div>
+    <app-segundo *ngFor="let user of users" [userName]="user"></app-segundo>
+</div>
+
+<div>
+    <p>street: {{address.street}}</p>
+    <p> city: {{address.city}}</p>
+    <ul>
+        <li *ngFor="let hobby of hobbies">{{hobby}} </li>
+    </ul>
+</div>
+
+<!--Recorremos el array de usuarios-->
+<ul>
+    <li *ngFor="let user of users">{{user}}<button (click)="delete(user)">X</button></li>
+</ul>
+
+<div *ngFor="let post of posts">
+    <h3>{{post.title}}</h3>
+    <p>{{post.body}}</p>
+</div>
